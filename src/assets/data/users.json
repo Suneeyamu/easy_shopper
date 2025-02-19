@@ -11,5 +11,18 @@
         "isActive":true,
         "isMailActive":true,
         "createAt":"2025-02-19"
+    },
+    {
+        "id":2,
+        "firstName":"Srivalli",
+        "lastName":"Deepika",
+        "email":"srivalli15@gmail.com",
+        "password":"260128",
+        "mobileNo":"9505194029",
+        "dob":"02-06-1993",
+        "role":"user",
+        "isActive":true,
+        "isMailActive":true,
+        "createAt":"2025-02-19"
     }
 ]
