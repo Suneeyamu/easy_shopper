@@ -60,7 +60,7 @@
 .error-message {
     color: #e74c3c;
     font-size: 0.9rem;
-    display: none;
+    /* display: none; */
 }
 
 .login-button {

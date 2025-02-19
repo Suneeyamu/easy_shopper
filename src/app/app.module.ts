@@ -16,6 +16,9 @@ import { FooterComponent } from './features/common/footer/footer.component';
 import { SignUpComponent } from './features/auth/sign-up/sign-up.component';
 import { ForgetPasswordComponent } from './features/auth/forget-password/forget-password.component';
 import { PageNotFoundComponent } from './features/auth/page-not-found/page-not-found.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SignInComponent } from './features/auth/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +33,17 @@ import { PageNotFoundComponent } from './features/auth/page-not-found/page-not-f
     CategoryListComponent,
     NavbarComponent,
     FooterComponent,
+    SignInComponent,
     SignUpComponent,
     ForgetPasswordComponent,
     PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
