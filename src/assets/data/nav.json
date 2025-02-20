@@ -26,6 +26,11 @@
     },
     {
         "id":6,
+        "name":"electric",
+        "isStatus": true
+    },
+    {
+        "id":7,
         "name":"all",
         "isStatus": true
     }

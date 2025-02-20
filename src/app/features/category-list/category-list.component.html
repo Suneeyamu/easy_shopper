@@ -1,16 +1,16 @@
 <div class="container mt-5">
-    <h2 class="text-center mb-4">ALL CATEGORIES</h2>
-    <div class="row g-4">
-        <!-- 20 category cards, 4 per row -->
-        <div class="col-sm-6 col-md-3" *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-{{i}}" class="card-img-top" alt="Category {{i}}">
-                <div class="card-body text-center">
-                    <h5>Category {{i}}</h5>
-                    <p class="discount-text">{{30 + i}}-{{70 + i}}% OFF</p>
-                    <a href="#" class="btn btn-outline-dark">Shop Now</a>
-                </div>
+    <h2 class="text-center mb-4">SHOP BY CATEGORY</h2>
+<div class="row g-4">
+    <div class="col-md-4 col-lg-2" *ngFor="let category of categories">
+        <div class="category-card">
+            <img [src]="category.image" class="card-img-top" [alt]="category.alt">
+            <div class="card-body text-center">
+                <h5>{{ category.title | titlecase }}</h5>
+                <p class="discount-text">{{ category.discount }}</p>
+                <a href="dashboard/productList/{{category.title}}" class="btn btn-outline-dark">Shop Now</a>
             </div>
         </div>
     </div>
+</div>
+
 </div>
