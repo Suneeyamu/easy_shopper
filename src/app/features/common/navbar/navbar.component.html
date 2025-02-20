@@ -31,6 +31,13 @@
               
               <!-- Icons -->
               <div class="icon-container d-flex align-items-center gap-3">
+                <a (click)="gotoAction('signin')" *ngIf="!isUserStatus" class="nav-link" aria-label="sign-in">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                </a>
+                <a (click)="gotoAction('signup')" *ngIf="!isUserStatus" class="nav-link" aria-label="sign-up">
+                    <i class="fa-solid fa-user-plus"></i>
+                </a>
+                
                   <a href="#" class="nav-link" aria-label="Profile">
                       <i class="far fa-user"></i>
                   </a>
@@ -41,9 +48,9 @@
                       <i class="fa-solid fa-bag-shopping"></i>
                       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">1</span>
                   </a>
-                  <a href="#" class="nav-link" aria-label="logout">
-                    <i class="far fa-logout"></i>
-                </a>
+                  <a (click)="logoutUser()" *ngIf="isUserStatus" class="nav-link" aria-label="logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                  </a>
               </div>
           </div>
       </div>

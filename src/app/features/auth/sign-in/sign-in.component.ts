@@ -39,7 +39,7 @@ export class SignInComponent implements OnInit {
     this.spinner.show();
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
-      this.toastr.error('Error!', 'Please enter valid email and password :(');
+      this.toastr.error('Please enter valid email and password :(', 'Error!');
 
       return;
     }
@@ -58,15 +58,15 @@ export class SignInComponent implements OnInit {
             id: user.id,
           };
           this.authService.setUser(getUserDetails);
-          this.toastr.success(
-            'Successfully logged :)',
-            `the user is ${user.firstName} ${user.lastName}`
+          this.toastr.success(  
+            `Welcome ${user.firstName} ${user.lastName}`,
+            'Successfully logged :)'
           );
           this.loginForm.reset();
           this.spinner.hide();
           this.router.navigate(['dashboard']);
         } else {
-          this.toastr.error('Error :)', 'Invalid email and password :(');
+          this.toastr.error('Invalid email and password :(', 'Error :)');
         }
       },
       error: (err) => {

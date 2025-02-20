@@ -20,10 +20,16 @@ export class AuthService {
   }
 
   setUser(userDetails:any) {
-    return localStorage.setItem('user', JSON.stringify(userDetails));
+    return sessionStorage.setItem('user', JSON.stringify(userDetails));
   }
 
   getUser() {
-    return localStorage.getItem('user');
+    const data = sessionStorage.getItem('user');
+    return data ? JSON.parse(data) : null;
+  }
+
+  // Clear sessionStorage
+  clearUser(): void {
+    sessionStorage.clear();
   }
 }

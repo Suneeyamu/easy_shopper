@@ -16,7 +16,7 @@ import { CategoryListComponent } from './features/category-list/category-list.co
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "sign-in",
+    redirectTo: "dashboard",
     pathMatch: "full"
   },
   {
