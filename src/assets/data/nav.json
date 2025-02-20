@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "name":"men",
+        "isStatus": true
+    },
+    {
+        "id":2,
+        "name":"women",
+        "isStatus": true
+    },
+    {
+        "id":3,
+        "name":"kids",
+        "isStatus": true
+    },
+    {
+        "id":4,
+        "name":"home & living",
+        "isStatus": true
+    },
+    {
+        "id":5,
+        "name":"toys",
+        "isStatus": true
+    },
+    {
+        "id":6,
+        "name":"all",
+        "isStatus": true
+    }
+]

@@ -7,6 +7,8 @@ import { FooterComponent } from './features/common/footer/footer.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { ProductListComponent } from './features/product-list/product-list.component';
 import { ProductDetailsComponent } from './features/product-details/product-details.component';
+import { PageNotFoundComponent } from './features/auth/page-not-found/page-not-found.component';
+import { HomeComponent } from './features/home/home.component';
 
 const routes: Routes = [
   {
@@ -24,16 +26,22 @@ const routes: Routes = [
   },
   {
     path: "dashboard",
-    component: DashboardComponent 
+    component: DashboardComponent, children:[
+      {
+        path:'',
+        component: HomeComponent
+      },
+      {
+        path: "productList/:id",
+        component: ProductListComponent 
+      },
+      {
+        path: "productDetails/:id",
+        component: ProductDetailsComponent 
+      }
+    ] 
   },
-  {
-    path: "productList",
-    component: ProductListComponent 
-  },
-  {
-    path: "productDetails",
-    component: ProductDetailsComponent 
-  },
+  {path:'**', component: PageNotFoundComponent}
 
 ];
 

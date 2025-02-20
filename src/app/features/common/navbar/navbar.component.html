@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg" >
   <div class="container-fluid">
       <!-- Brand Logo -->
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/dashboard">
           <div class="logo-container">
               <span class="logo-text">E</span>
               <span class="logo-text">S</span>
@@ -20,18 +20,13 @@
       <!-- Updated Navbar Content -->
       <div class="collapse navbar-collapse" id="navbarContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item"><a class="nav-link" href="#">MEN</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">WOMEN</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">KIDS</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">HOME & LIVING</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">TOYS</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">All</a></li>
+              <li class="nav-item" *ngFor="let option of menu"><a class="nav-link" href="/dashboard/productList/{{option.name}}">{{option.name | uppercase}}</a></li>
           </ul>
           
           <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center w-95 gap-3 py-2">
               <!-- Search bar -->
               <div class="flex-grow-1">
-                  <input type="text" class="form-control" placeholder="Search for products, brands and more">
+                  <input type="text" class="form-control" placeholder="Search here">
               </div>
               
               <!-- Icons -->
@@ -46,6 +41,9 @@
                       <i class="fa-solid fa-bag-shopping"></i>
                       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">1</span>
                   </a>
+                  <a href="#" class="nav-link" aria-label="logout">
+                    <i class="far fa-logout"></i>
+                </a>
               </div>
           </div>
       </div>
