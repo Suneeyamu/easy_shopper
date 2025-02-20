@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinner } from 'ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -10,11 +10,15 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class DashboardComponent implements OnInit{
 
   userDetails:any;
-  constructor(private authService: AuthService, private spinner: NgxSpinner){}
+  constructor(private authService: AuthService, private spinner: NgxSpinnerService){}
 
   ngOnInit(): void {
+    this.spinner.show();
     const user = this.authService.getUser();
-    this.userDetails = user ? JSON.parse(user) : null;
+    if(user){
+      this.userDetails = user ? JSON.parse(user) : null;
+      this.spinner.hide();
+    }
   }
 
 }
