@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignInComponent } from './features/auth/sign-in/sign-in.component';
 import { HomeComponent } from './features/home/home.component';
+import { RatingComponent } from './shared/components/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HomeComponent } from './features/home/home.component';
     SignUpComponent,
     ForgetPasswordComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

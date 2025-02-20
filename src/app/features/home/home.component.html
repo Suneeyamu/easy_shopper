@@ -1,57 +1,18 @@
 <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
     <!-- Carousel Indicators -->
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
-        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="3"></button>
-        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="4"></button>
+        <button *ngFor="let item of items; let i = index" type="button" data-bs-target="#mainCarousel"
+            [attr.data-bs-slide-to]="i" [class.active]="i === 0"></button>
     </div>
 
     <!-- Carousel Items -->
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6" class="d-block w-100" alt="Men's Fashion">
+        <div *ngFor="let item of items; let i = index" class="carousel-item" [class.active]="i === 0">
+            <img [src]="item.image" class="d-block w-100" [alt]="item.alt">
             <div class="carousel-caption">
-                <h2>Men's Collection</h2>
-                <p>Discover the latest trends in men's fashion</p>
-                <button class="btn btn-light">Shop Now</button>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" class="d-block w-100" alt="Women's Fashion">
-            <div class="carousel-caption">
-                <h2>Women's Collection</h2>
-                <p>Explore our exclusive women's wear</p>
-                <button class="btn btn-light">Shop Now</button>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6" class="d-block w-100" alt="Kids Fashion">
-            <div class="carousel-caption">
-                <h2>Kids Collection</h2>
-                <p>Cute and comfortable clothing for your little ones</p>
-                <button class="btn btn-light">Shop Now</button>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4" class="d-block w-100" alt="Toys">
-            <div class="carousel-caption">
-                <h2>Toys Collection</h2>
-                <p>Fun and educational toys for all ages</p>
-                <button class="btn btn-light">Shop Now</button>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a" class="d-block w-100" alt="Home & Living">
-            <div class="carousel-caption">
-                <h2>Home & Living</h2>
-                <p>Transform your space with our home collection</p>
-                <button class="btn btn-light">Shop Now</button>
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.description }}</p>
+                <button class="btn btn-light">{{ item.buttonText }}</button>
             </div>
         </div>
     </div>
@@ -66,6 +27,7 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+
 
 <div class="container mt-5">
     <h2 class="text-center mb-4">SHOP BY CATEGORY</h2>

@@ -1,0 +1,38 @@
+[
+    {
+      "image": "https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6",
+      "alt": "Men's Fashion",
+      "title": "Men's Collection",
+      "description": "Discover the latest trends in men's fashion",
+      "buttonText": "Shop Now"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b",
+      "alt": "Women's Fashion",
+      "title": "Women's Collection",
+      "description": "Explore our exclusive women's wear",
+      "buttonText": "Shop Now"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1514090458221-65bb69cf63e6",
+      "alt": "Kids Fashion",
+      "title": "Kids Collection",
+      "description": "Cute and comfortable clothing for your little ones",
+      "buttonText": "Shop Now"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4",
+      "alt": "Toys",
+      "title": "Toys Collection",
+      "description": "Fun and educational toys for all ages",
+      "buttonText": "Shop Now"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1484101403633-562f891dc89a",
+      "alt": "Home & Living",
+      "title": "Home & Living",
+      "description": "Transform your space with our home collection",
+      "buttonText": "Shop Now"
+    }
+  ]
+  
