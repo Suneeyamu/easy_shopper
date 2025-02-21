@@ -38,9 +38,9 @@ export class NavbarComponent implements OnInit {
 
   gotoAction(val:string){
     if(val === 'signin'){
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['/sign-in']);
     }else if(val === 'signup'){
-      this.router.navigate(['sign-up']);
+      this.router.navigate(['/sign-up']);
     }
   }
 

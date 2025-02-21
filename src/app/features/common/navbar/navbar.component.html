@@ -31,24 +31,24 @@
               
               <!-- Icons -->
               <div class="icon-container d-flex align-items-center gap-3">
-                <a (click)="gotoAction('signin')" *ngIf="!isUserStatus" class="nav-link" aria-label="sign-in">
+                <a (click)="gotoAction('signin')" *ngIf="!isUserStatus" class="nav-link" aria-label="Sign In">
                     <i class="fa-solid fa-right-to-bracket"></i>
                 </a>
-                <a (click)="gotoAction('signup')" *ngIf="!isUserStatus" class="nav-link" aria-label="sign-up">
+                <a (click)="gotoAction('signup')" *ngIf="!isUserStatus" class="nav-link" aria-label="Sign Up">
                     <i class="fa-solid fa-user-plus"></i>
                 </a>
                 
-                  <a href="#" class="nav-link" aria-label="Profile">
+                  <a href="#" *ngIf="isUserStatus" class="nav-link" aria-label="Profile">
                       <i class="far fa-user"></i>
                   </a>
-                  <a href="#" class="nav-link" aria-label="Wishlist">
+                  <a href="dashboard/wishlist" *ngIf="isUserStatus" class="nav-link" aria-label="Wishlist">
                       <i class="far fa-heart"></i>
                   </a>
-                  <a href="#" class="nav-link position-relative" aria-label="Shopping Cart">
+                  <a href="dashboard/cart" *ngIf="isUserStatus" class="nav-link position-relative" aria-label="Shopping Cart">
                       <i class="fa-solid fa-bag-shopping"></i>
                       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">1</span>
                   </a>
-                  <a (click)="logoutUser()" *ngIf="isUserStatus" class="nav-link" aria-label="logout">
+                  <a (click)="logoutUser()" *ngIf="isUserStatus" class="nav-link" aria-label="Logout">
                     <i class="fa-solid fa-right-from-bracket"></i>
                   </a>
               </div>
