@@ -13,6 +13,7 @@ import { NavigationService } from 'src/app/shared/services/navigation.service';
 export class NavbarComponent implements OnInit {
   menu: any;
   isUserStatus: boolean = false;
+  wishlistCount: number = 0;
   constructor(
     private navService: NavigationService,
     private authService: AuthService,
@@ -27,19 +28,24 @@ export class NavbarComponent implements OnInit {
     this.navService.getMenu().subscribe((res) => {
       this.menu = res;
     });
+    this.wishlistCount = JSON.parse(
+      sessionStorage.getItem('wishlist') || '[]'
+    ).length;
     this.dataService.refreshLogout$.subscribe(() => {
       this.navService.getMenu().subscribe((res) => {
         this.menu = res;
         this.isUserStatus = this.authService.getUser() ? true : false;
-
+        this.wishlistCount = JSON.parse(
+          sessionStorage.getItem('wishlist') || '[]'
+        ).length;
       });
-    })
+    });
   }
 
-  gotoAction(val:string){
-    if(val === 'signin'){
+  gotoAction(val: string) {
+    if (val === 'signin') {
       this.router.navigate(['/sign-in']);
-    }else if(val === 'signup'){
+    } else if (val === 'signup') {
       this.router.navigate(['/sign-up']);
     }
   }

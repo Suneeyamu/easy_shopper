@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Nike Air Max Plus",
+    "description": "Men's Running Shoes with innovative cushioning system",
+    "image": null,
+    "rating": 4.0,
+    "currentPrice": 179.99,
+    "originalPrice": 199.99
+  },
+  {
+    "id": 2,
+    "name": "Nike Zegama",
+    "description": "Trail Running Shoes with enhanced grip and durability",
+    "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/7c5678f4-c28d-4862-a8d9-56750f839f12/zegama-trail-running-shoes-9q0Znk.png",
+    "rating": 4.5,
+    "currentPrice": 159.99,
+    "originalPrice": 189.99
+  },
+  {
+    "id": 3,
+    "name": "Nike Air Max Plus",
+    "description": "Men's Running Shoes with innovative cushioning system",
+    "image": null,
+    "rating": 4.0,
+    "currentPrice": 179.99,
+    "originalPrice": 199.99
+  }
+]

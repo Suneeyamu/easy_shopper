@@ -41,8 +41,10 @@
                   <a href="#" *ngIf="isUserStatus" class="nav-link" aria-label="Profile">
                       <i class="far fa-user"></i>
                   </a>
-                  <a href="dashboard/wishlist" *ngIf="isUserStatus" class="nav-link" aria-label="Wishlist">
+                  <a href="dashboard/wishlist" *ngIf="isUserStatus" class="nav-link position-relative" aria-label="Wishlist">
                       <i class="far fa-heart"></i>
+                      <span *ngIf="wishlistCount > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{wishlistCount}}</span>
+
                   </a>
                   <a href="dashboard/cart" *ngIf="isUserStatus" class="nav-link position-relative" aria-label="Shopping Cart">
                       <i class="fa-solid fa-bag-shopping"></i>

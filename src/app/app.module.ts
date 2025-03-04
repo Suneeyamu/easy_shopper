@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignInComponent } from './features/auth/sign-in/sign-in.component';
 import { HomeComponent } from './features/home/home.component';
 import { RatingComponent } from './shared/components/rating/rating.component';
+import { DiscountPipe } from './shared/pipes/discount.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { RatingComponent } from './shared/components/rating/rating.component';
     ForgetPasswordComponent,
     PageNotFoundComponent,
     HomeComponent,
-    RatingComponent
+    RatingComponent,
+    DiscountPipe
   ],
   imports: [
     BrowserModule,

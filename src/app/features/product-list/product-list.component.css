@@ -50,11 +50,16 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+
 }
 
 .wishlist:hover {
-    background: #ff4d4d;
+    background: #dd8e8e;
     color: white;
+}
+
+.wishlist .fa-heart {
+    color: #ff4d4d;
 }
 
 .product-details {
