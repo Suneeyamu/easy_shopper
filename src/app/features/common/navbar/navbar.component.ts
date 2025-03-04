@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   menu: any;
   isUserStatus: boolean = false;
   wishlistCount: number = 0;
+  cartCount: number = 0;
   constructor(
     private navService: NavigationService,
     private authService: AuthService,
@@ -31,12 +32,16 @@ export class NavbarComponent implements OnInit {
     this.wishlistCount = JSON.parse(
       sessionStorage.getItem('wishlist') || '[]'
     ).length;
+    this.cartCount = JSON.parse(sessionStorage.getItem('cart') || '[]').length;
     this.dataService.refreshLogout$.subscribe(() => {
       this.navService.getMenu().subscribe((res) => {
         this.menu = res;
         this.isUserStatus = this.authService.getUser() ? true : false;
         this.wishlistCount = JSON.parse(
           sessionStorage.getItem('wishlist') || '[]'
+        ).length;
+        this.cartCount = JSON.parse(
+          sessionStorage.getItem('cart') || '[]'
         ).length;
       });
     });

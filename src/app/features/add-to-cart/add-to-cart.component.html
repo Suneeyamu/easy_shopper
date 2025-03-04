@@ -14,117 +14,38 @@
         </div>
 
         <!-- Cart Items -->
-        <div class="cart-item">
+        <div class="cart-item" *ngFor="let product of products">
             <div class="item-checkbox">
               <input type="checkbox" checked>
             </div>
             <div class="item-image">
-              <img src="product-image.jpg" alt="Product">
+              <img src="{{product.image}}" alt="{{product.name}}" (error)="onImageError($event)">
             </div>
             <div class="item-details">
               <div class="product-info">
                 <h3 class="brand">BOROPLUS</h3>
-                <p class="product-name">Soft Light Moisturising Cream - 300 ml</p>
+                <p class="product-name">{{product.name}}</p>
                 <p class="seller">Sold by: Supercom Net</p>
               </div>
               
               <div class="item-controls">
-                <div class="size-selector">
-                  <span>Size: </span>
-                  <select>
-                    <option>200-300 ML</option>
-                  </select>
-                </div>
                 <div class="quantity-selector">
                   <span>Qty: </span>
-                  <select>
-                    <option>2</option>
-                  </select>
+                  <button (click)="updateQuantity(product.id, 'decrease')" class="qty-btn">-</button>
+                  <input type="text" [(ngModel)]="product.quantity" class="qty-input" readonly />
+                  <button (click)="updateQuantity(product.id, 'increase')" class="qty-btn">+</button>
                 </div>
               </div>
           
               <div class="pricing">
-                <span class="current-price">₹216</span>
-                <span class="original-price">₹870</span>
-                <span class="discount">75% OFF</span>
+                <span class="current-price">{{product.currentPrice | currency:'₹ '}}</span>
+                <span class="original-price">{{product.originalPrice | currency:'₹ '}}</span>
+                <span class="discount">{{ product.originalPrice | discount:product.currentPrice }}</span>
               </div>
             </div>
-            <button class="remove-item">✕</button>
+            <button class="remove-item" (click)="removeCart(product)">✕</button>
           </div>
-          <div class="cart-item">
-            <div class="item-checkbox">
-              <input type="checkbox" checked>
-            </div>
-            <div class="item-image">
-              <img src="product-image.jpg" alt="Product">
-            </div>
-            <div class="item-details">
-              <div class="product-info">
-                <h3 class="brand">BOROPLUS</h3>
-                <p class="product-name">Soft Light Moisturising Cream - 300 ml</p>
-                <p class="seller">Sold by: Supercom Net</p>
-              </div>
-              
-              <div class="item-controls">
-                <div class="size-selector">
-                  <span>Size: </span>
-                  <select>
-                    <option>200-300 ML</option>
-                  </select>
-                </div>
-                <div class="quantity-selector">
-                  <span>Qty: </span>
-                  <select>
-                    <option>2</option>
-                  </select>
-                </div>
-              </div>
-          
-              <div class="pricing">
-                <span class="current-price">₹216</span>
-                <span class="original-price">₹870</span>
-                <span class="discount">75% OFF</span>
-              </div>
-            </div>
-            <button class="remove-item">✕</button>
-          </div>
-          <div class="cart-item">
-            <div class="item-checkbox">
-              <input type="checkbox" checked>
-            </div>
-            <div class="item-image">
-              <img src="product-image.jpg" alt="Product">
-            </div>
-            <div class="item-details">
-              <div class="product-info">
-                <h3 class="brand">BOROPLUS</h3>
-                <p class="product-name">Soft Light Moisturising Cream - 300 ml</p>
-                <p class="seller">Sold by: Supercom Net</p>
-              </div>
-              
-              <div class="item-controls">
-                <div class="size-selector">
-                  <span>Size: </span>
-                  <select>
-                    <option>200-300 ML</option>
-                  </select>
-                </div>
-                <div class="quantity-selector">
-                  <span>Qty: </span>
-                  <select>
-                    <option>2</option>
-                  </select>
-                </div>
-              </div>
-          
-              <div class="pricing">
-                <span class="current-price">₹216</span>
-                <span class="original-price">₹870</span>
-                <span class="discount">75% OFF</span>
-              </div>
-            </div>
-            <button class="remove-item">✕</button>
-          </div>
+         
     </div>
 
     <!-- Price Details -->
@@ -133,28 +54,28 @@
             <h3>PRICE DETAILS (1 Item)</h3>
             <div class="price-row">
               <span>Total MRP</span>
-              <span>₹870</span>
+              <span>{{getTotalMRP() | currency:'₹ ':'symbol':'1.2-2'}}</span>
             </div>
             <div class="price-row">
               <span>Discount on MRP</span>
-              <span class="discount-amount">- ₹654</span>
+              <span class="discount-amount">- {{getTotalDiscount() | currency:'₹ ':'symbol':'1.2-2'}}</span>
             </div>
             <div class="price-row">
               <span>Coupon Discount</span>
               <span class="coupon-text">Apply Coupon</span>
             </div>
             <div class="price-row">
-              <span>Platform Fee <a href="#" class="know-more">Know More</a></span>
+              <span>Platform Fee <a class="know-more">Know More</a></span>
               <span>₹20</span>
             </div>
             <div class="price-row">
-              <span>Shipping Fee <a href="#" class="know-more">Know More</a></span>
+              <span>Shipping Fee <a class="know-more">Know More</a></span>
               <span class="free-text">FREE</span>
             </div>
             <div class="shipping-note">Free shipping for Myntra Insiders</div>
             <div class="total-row">
               <span>Total Amount</span>
-              <span>₹236</span>
+              <span>{{getTotalAmount() | currency:'₹ ':'symbol':'1.2-2'}}</span>
             </div>
             <button class="place-order-btn">PLACE ORDER</button>
           </div>

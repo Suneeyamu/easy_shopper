@@ -20,7 +20,7 @@
                             <span class="current-price">{{product.currentPrice | currency:'₹ '}}</span>
                             <span class="original-price">{{product.originalPrice | currency:'₹ '}}</span>
                         </div>
-                        <button class="add-to-cart">
+                        <button class="add-to-cart" (click)="addToCart(product)">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                     </div>

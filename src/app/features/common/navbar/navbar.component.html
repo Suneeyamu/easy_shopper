@@ -48,7 +48,7 @@
                   </a>
                   <a href="dashboard/cart" *ngIf="isUserStatus" class="nav-link position-relative" aria-label="Shopping Cart">
                       <i class="fa-solid fa-bag-shopping"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">1</span>
+                      <span *ngIf="cartCount > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{cartCount}}</span>
                   </a>
                   <a (click)="logoutUser()" *ngIf="isUserStatus" class="nav-link" aria-label="Logout">
                     <i class="fa-solid fa-right-from-bracket"></i>

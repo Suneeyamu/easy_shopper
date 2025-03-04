@@ -16,9 +16,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private productListService: ProductListService,
     private dataService: DataCommunicationService
-  ) {
-    // sessionStorage.removeItem('wishlist');
-  }
+  ) {}
 
   ngOnInit() {
     this.productListService.getProducts().subscribe((data) => {
@@ -49,6 +47,18 @@ export class ProductListComponent implements OnInit {
     }
 
     sessionStorage.setItem('wishlist', JSON.stringify(setProducts));
+    this.dataService.triggerRefreshLogout();
+  }
+
+  addToCart(product: any) {
+    const index = this.wishlist.indexOf(product.id);
+    const setProducts = JSON.parse(sessionStorage.getItem('cart') || '[]');
+    if (index === -1) {
+      setProducts.push(product);
+    } else {
+      setProducts.pop(index, 1);
+    }
+    sessionStorage.setItem('cart', JSON.stringify(setProducts));
     this.dataService.triggerRefreshLogout();
   }
 }
