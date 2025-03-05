@@ -4,7 +4,7 @@
         <div class="selection-header">
             <div class="items-selection">
                 <span class="minus-icon">−</span>
-                <span class="items-count">1/49 ITEMS SELECTED</span>
+                <span class="items-count">{{products.length}}/{{products.length}} ITEMS SELECTED</span>
             </div>
             <div class="action-buttons">
                 <button class="action-btn">REMOVE</button>
@@ -16,7 +16,7 @@
         <!-- Cart Items -->
         <div class="cart-item" *ngFor="let product of products">
             <div class="item-checkbox">
-              <input type="checkbox" checked>
+              <input type="checkbox" checked disabled>
             </div>
             <div class="item-image">
               <img src="{{product.image}}" alt="{{product.name}}" (error)="onImageError($event)">

@@ -2,8 +2,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './../../../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DataCommunicationService } from 'src/app/shared/services/data-communication.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,8 +16,8 @@ export class SignInComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
-    private toastr: ToastrService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private dataService: DataCommunicationService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -25,7 +25,9 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.spinner.hide();
+  }
 
   get email() {
     return this.loginForm.get('email');
@@ -39,7 +41,10 @@ export class SignInComponent implements OnInit {
     this.spinner.show();
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
-      this.toastr.error('Please enter valid email and password :(', 'Error!');
+      this.dataService.error(
+        'Please enter valid email and password :(',
+        'Error!'
+      );
 
       return;
     }
@@ -58,7 +63,7 @@ export class SignInComponent implements OnInit {
             id: user.id,
           };
           this.authService.setUser(getUserDetails);
-          this.toastr.success(  
+          this.dataService.success(
             `Welcome ${user.firstName} ${user.lastName}`,
             'Successfully logged :)'
           );
@@ -66,7 +71,7 @@ export class SignInComponent implements OnInit {
           this.spinner.hide();
           this.router.navigate(['dashboard']);
         } else {
-          this.toastr.error('Invalid email and password :(', 'Error :)');
+          this.dataService.error('Invalid email and password :(', 'Error :)');
         }
       },
       error: (err) => {

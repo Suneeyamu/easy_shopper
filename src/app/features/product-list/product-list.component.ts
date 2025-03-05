@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { DataCommunicationService } from 'src/app/shared/services/data-communication.service';
 import { ProductListService } from 'src/app/shared/services/product-list.service';
 
@@ -12,11 +13,16 @@ export class ProductListComponent implements OnInit {
   defaultImage =
     'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/1c8e9888-aa99-4e1c-9f54-4e2d17b186dd/air-max-plus-shoes-pBxkKX.png';
   wishlist: number[] = [];
+  cart: number[] = [];
+  isLoggedIn = false;
 
   constructor(
     private productListService: ProductListService,
-    private dataService: DataCommunicationService
-  ) {}
+    private dataService: DataCommunicationService,
+    private authService: AuthService
+  ) {
+    this.isLoggedIn = this.authService.getUser();
+  }
 
   ngOnInit() {
     this.productListService.getProducts().subscribe((data) => {
@@ -35,15 +41,19 @@ export class ProductListComponent implements OnInit {
   }
 
   toggleWishlist(product: any) {
+    if (!this.isLoggedIn)
+      return this.dataService.error('Please login to add to wishlist', 'Error');
     const index = this.wishlist.indexOf(product.id);
     const setProducts = JSON.parse(sessionStorage.getItem('wishlist') || '[]');
 
     if (index === -1) {
       this.wishlist.push(product.id); // Add product to wishlist
       setProducts.push(product);
+      this.dataService.success(`${product.name} added to wishlist`, 'Wishlist');
     } else {
       this.wishlist.splice(index, 1); // Remove product from wishlist
       setProducts.pop(index, 1);
+      this.dataService.info(`${product.name} removed to wishlist`, 'Wishlist');
     }
 
     sessionStorage.setItem('wishlist', JSON.stringify(setProducts));
@@ -51,12 +61,22 @@ export class ProductListComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    const index = this.wishlist.indexOf(product.id);
+    if (!this.isLoggedIn)
+      return this.dataService.error('Please login to add to cart', 'Error');
+    const index = this.cart.indexOf(product.id);
     const setProducts = JSON.parse(sessionStorage.getItem('cart') || '[]');
     if (index === -1) {
       setProducts.push(product);
+      this.dataService.success(
+        `${product.name} added to add to cart`,
+        'Add to Cart'
+      );
     } else {
       setProducts.pop(index, 1);
+      this.dataService.info(
+        `${product.name} removed to add cart`,
+        'Removed to Cart'
+      );
     }
     sessionStorage.setItem('cart', JSON.stringify(setProducts));
     this.dataService.triggerRefreshLogout();

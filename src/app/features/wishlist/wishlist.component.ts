@@ -25,6 +25,7 @@ export class WishlistComponent implements OnInit {
   removeWishlist(product: any) {
     const setProducts = JSON.parse(sessionStorage.getItem('wishlist') || '[]');
     setProducts.pop(product.id, 1);
+    this.dataService.info(`${product.name} removed from wishlist`, 'Wishlist');
     this.updateSessionStorage(setProducts);
   }
 
